@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import store from './store'
+import mixin from './mixin'
 
 import './app.styl'
 

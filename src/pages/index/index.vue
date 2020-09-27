@@ -1,30 +1,38 @@
-<template>
-  <view class="index">
-    <NumberDisplay/>
-    <NumberSubmit/>
-  </view>
+<template lang="pug">
+  .home
+    img.logo.active(src="/@/assets/logo.png")
+    .msg {{msg}}
+    .btn(@click="go('/detail')") go detail
+    .btn(@click="debounce(submit)") 提交
 </template>
 
 <script>
-import NumberDisplay from '../../components/NumberDisplay.vue'
-import NumberSubmit from '../../components/NumberSubmit.vue'
-
 export default {
-  name: 'Index',
-  components: {
-    NumberDisplay,
-    NumberSubmit
+  name: 'home',
+  data() {
+    return {
+      msg: 'vue 3'
+    }
+  },
+  methods: {
+    async submit () {
+      let res = await this.http.get('/hehe')
+      console.log(res)
+    }
+  },
+  mounted () {
   }
 }
 </script>
 
-<style>
-.index {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped vars lang="stylus">
+
+.home {
+  .logo {
+    width 1rem
+  }
+  .msg {
+    color theme
+  }
 }
 </style>
