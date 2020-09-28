@@ -14,17 +14,25 @@ const config = {
   },
   copy: {
     patterns: [
+      { from: 'src/native/vant/wxs', to: 'dist/native/vant/wxs' }
     ],
     options: {
     }
   },
   framework: 'vue3',
   mini: {
+    webpackChain (config) {
+      config.module
+        .rule('pug')
+        .test(/\.pug$/)
+        .use('pug-plain-loader')
+        .loader('pug-plain-loader')
+    },
     postcss: {
       pxtransform: {
         enable: true,
         config: {
-
+          selectorBlackList: [/van-/]
         }
       },
       url: {

@@ -1,11 +1,19 @@
-import fly from 'flyio'
+import Taro from '@tarojs/taro'
+import Fly from 'flyio/dist/npm/wx'
 import moment from 'moment'
+
+let fly = new Fly()
+
+let config = {
+  api: 'https://baidu.com'
+}
 
 export default {
   components: {
   },
   data () {
     return {
+      query: '',
       debounceTimer: '',
       moment: moment()
     }
@@ -13,17 +21,29 @@ export default {
   filters: {
   },
   methods: {
-    go (path) {
-      this.$router.push(path)
+    go (key) {
+      let url
+      if (typeof key === 'string') {
+        url = `/pages/${key}/index`
+      } else {
+        let queryArr = []
+        for (let item in key.query) {
+          queryArr.push(`${item}=${key.query[item]}`)
+        }
+        url = `/pages/${key.path}/index?${queryArr.join('&')}`
+      }
+      Taro.navigateTo({url: url})
     },
     goBack (key = -1) {
-      this.$router.go(key)
+      Taro.navigateBack({
+        delta: 2
+      })
     },
     toast (text, delay = 1500) {
-      this.$toast({message: text, duration: delay})
+      Taro.showToast({ title: text, icon: 'none', duration: delay || 1000 })
     },
     http (url, form = {}, type) {
-      url = url.indexOf("http") !== -1 ? url : api + url
+      url = url.indexOf("http") !== -1 ? url : config.api + url
       return fly.request(url, form, {
         method: type,
         headers: {
@@ -34,10 +54,10 @@ export default {
         if (res.status === 200) {
           return res.data
         } else {
-          this.toast(`请求错误：${res.message}\n状态码：${res.status}`)
+          this.toast(`请求错误：${res.message}，状态码：${res.status}`)
         }
       }).catch((err) => {
-        this.toast(`请求错误：${err.message}\n状态码：${err.status}`)
+        this.toast(`请求错误：${err.message}，状态码：${err.status}`)
       })
     },
     setHttp () {
@@ -125,7 +145,8 @@ export default {
   },
   watch: {
   },
-  mounted () {
+  onLoad (option) {
+    this.query = option
     this.setHttp()
   },
   beforeDestory () {

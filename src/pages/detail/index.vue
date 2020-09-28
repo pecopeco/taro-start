@@ -1,14 +1,11 @@
 <template lang="pug">
-  .home
-    img.logo.active(src="/@/assets/logo.png")
-    .msg {{msg}}
-    .btn(@click="go('/detail')") go detail
-    .btn(@click="debounce(submit)") 提交
+.detail
+  button.btn(@tap="goBack") 返回
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'detail',
   data() {
     return {
       msg: 'vue 3'
@@ -20,16 +17,17 @@ export default {
       console.log(res)
     }
   },
-  mounted () {
+  onLoad (option) {
   }
 }
 </script>
 
-<style scoped vars lang="stylus">
+<style vars lang="stylus">
 
-.home {
+.detail {
   .logo {
-    width 1rem
+    width 100px
+    height 100px
   }
   .msg {
     color theme
