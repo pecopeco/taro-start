@@ -1,6 +1,6 @@
 <template lang="pug">
 .detail
-  button.btn(@tap="goBack") 返回
+  .query {{query.id}}
 </template>
 
 <script>
@@ -8,16 +8,13 @@ export default {
   name: 'detail',
   data() {
     return {
-      msg: 'vue 3'
+      query: ''
     }
   },
   methods: {
-    async submit () {
-      let res = await this.http.get('/hehe')
-      console.log(res)
-    }
   },
   onLoad (option) {
+    this.query = option
   }
 }
 </script>
@@ -25,12 +22,5 @@ export default {
 <style vars lang="stylus">
 
 .detail {
-  .logo {
-    width 100px
-    height 100px
-  }
-  .msg {
-    color theme
-  }
 }
 </style>

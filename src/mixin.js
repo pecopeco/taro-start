@@ -13,7 +13,6 @@ export default {
   },
   data () {
     return {
-      query: '',
       debounceTimer: '',
       moment: moment()
     }
@@ -145,8 +144,7 @@ export default {
   },
   watch: {
   },
-  onLoad (option) {
-    this.query = option
+  mounted () {
     this.setHttp()
   },
   beforeDestory () {
