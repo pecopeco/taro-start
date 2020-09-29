@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro'
 import Fly from 'flyio/dist/npm/wx'
-import moment from 'moment'
+import lodash from 'lodash'
+import dayjs from 'dayjs'
 
 let fly = new Fly()
 
@@ -14,7 +15,8 @@ export default {
   data () {
     return {
       debounceTimer: '',
-      moment: moment()
+      day: dayjs(),
+      lodash: lodash
     }
   },
   filters: {
