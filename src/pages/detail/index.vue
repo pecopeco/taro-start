@@ -1,7 +1,7 @@
 <template lang="pug">
 .detail
   .query {{query.id}}
-  .date {{day.format('YYYY年MM月DD HH:mm:ss')}}
+  .date {{day().format('YYYY年MM月DD HH:mm:ss')}}
 </template>
 
 <script>
