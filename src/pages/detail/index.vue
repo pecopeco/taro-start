@@ -9,13 +9,13 @@ export default {
   name: 'detail',
   data() {
     return {
-      query: ''
     }
   },
   methods: {
   },
-  onLoad (option) {
-    this.query = option
+  async mounted () {
+    await this.getQuery()
+    console.log(this.query)
   }
 }
 </script>

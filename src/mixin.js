@@ -13,6 +13,7 @@ export default {
   },
   data () {
     return {
+      query: '',
       debounceTimer: '',
       day: dayjs
     }
@@ -25,11 +26,12 @@ export default {
       if (typeof key === 'string') {
         url = `/pages/${key}/index`
       } else {
+        url = `/pages/${key.path}/index`
         let queryArr = []
         for (let item in key.query) {
           queryArr.push(`${item}=${key.query[item]}`)
         }
-        url = `/pages/${key.path}/index?${queryArr.join('&')}`
+        wx.setStorage({key: key.path, data: queryArr.join('&')})
       }
       Taro.navigateTo({url: url})
     },
@@ -37,6 +39,26 @@ export default {
       Taro.navigateBack({
         delta: 2
       })
+    },
+    getQuery () {
+      let pages = getCurrentPages()
+      if (pages.length) {
+        let pageName = pages[pages.length - 1].is.split('/')[1]
+        return new Promise((resolve) => {
+          wx.getStorage({
+            key: pageName,
+            success: (res) => {
+              let obj = {}
+              res.data.split('&').map((item) => {
+                obj[item.split('=')[0]] = item.split('=')[1]
+              })
+              this.query = obj
+              wx.removeStorage({key: pageName})
+              resolve(obj)
+            }
+          })
+        })
+      }
     },
     toast (text, delay = 1500) {
       Taro.showToast({ title: text, icon: 'none', duration: delay || 1000 })
