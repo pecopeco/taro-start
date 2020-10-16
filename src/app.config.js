@@ -11,19 +11,20 @@ export default {
     navigationBarTextStyle: 'black'
   },
   tabBar: {
-    color: '#333',
-    selectedColor: '#007d37',
+    color: '#BDBDBD',
+    selectedColor: '#3cc51f',
     borderStyle: 'white',
+    backgroundColor: '#ffffff',
     list: [
       {
         pagePath: 'pages/home/index',
-        text: 'home',
+        text: '首页',
         iconPath: 'assets/home.png',
         selectedIconPath: 'assets/home_on.png'
       },
       {
         pagePath: 'pages/my/index',
-        text: 'my',
+        text: '我的',
         iconPath: 'assets/my.png',
         selectedIconPath: 'assets/my_on.png'
       }

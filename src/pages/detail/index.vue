@@ -1,21 +1,25 @@
 <template lang="pug">
 .detail
-  .query {{query.id}}
-  .date {{day().format('YYYY年MM月DD HH:mm:ss')}}
+  view {{ msg }}
+  view get query: {{query().from}}
 </template>
 
 <script>
+import { ref } from 'vue'
+import mixin from '@/mixin.js'
+
 export default {
-  name: 'detail',
-  data() {
+  setup () {
+    const { query } = mixin()
+    const msg = ref('Hello world: detail')
+    console.log(query())
     return {
+      msg,
+      query
     }
   },
-  methods: {
-  },
-  async mounted () {
-    await this.getQuery()
-    console.log(this.query)
+  onShow () {
+    const setup = this.$options.setup()
   }
 }
 </script>

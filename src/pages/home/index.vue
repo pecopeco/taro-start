@@ -1,33 +1,31 @@
 <template lang="pug">
 .home
-  image.logo.active(@tap="submit()" src="@/assets/logo.png")
-  .msg {{msg}}
-  button.btn(@tap="go({path: 'detail', query: {id: 1}})") go detail
-  button.btn(@tap="debounce(submit)") 提交
-  loading
+  text {{ msg.text }}
+  button(@tap="go({path: 'detail', query: {from: 'home'}})") go detail
 </template>
 
 <script>
-import loading from '@/components/loading'
+import { ref, onMounted } from 'vue'
+import mixin from '@/mixin.js'
 
 export default {
-  name: 'home',
-  components: {
-    loading
-  },
-  data() {
+  setup () {
+    const { store, day, go, query, http, userInfo } = mixin()
+    const msg = ref({text: 'Hello world'})
+    const getData = async () => {
+      await http.get('/hehe')
+      store.dispatch('setUser', 'teng')
+      console.log('getData', query(), msg.value.text, userInfo.value, day().format('YYYY年MM月DD HH:mm:ss'))
+    }
     return {
-      msg: 'vue 3'
+      go,
+      msg,
+      getData
     }
   },
-  methods: {
-    async submit () {
-      let res = await this.http.get('/hehe')
-      console.log(res)
-    }
-  },
-  mounted () {
-    console.log(this.userInfo)
+  onShow () {
+    const setup = this.$options.setup()
+    setup.getData()
   }
 }
 </script>
@@ -35,12 +33,5 @@ export default {
 <style vars lang="stylus">
 
 .home {
-  .logo {
-    width 100px
-    height 100px
-  }
-  .msg {
-    color theme
-  }
 }
 </style>
