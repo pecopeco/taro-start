@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
 import Fly from 'flyio/dist/npm/wx'
 import dayjs from 'dayjs'
@@ -9,6 +9,7 @@ const fly = new Fly()
 const config = { api: 'https://baidu.com' }
 
 export default () => {
+  
   // 日期处理函数
   const day = dayjs
 
@@ -118,7 +119,7 @@ export default () => {
 
   // 防抖
   let debounceTimer
-  const debounce = (func, delay = 1000) => {
+  const debounce = function (func, delay = 1000){
     if (debounceTimer) {
       clearTimeout(debounceTimer)
     }

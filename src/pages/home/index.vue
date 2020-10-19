@@ -16,12 +16,15 @@ export default {
   },
   setup () {
     const { store, day, go, query, http, userInfo } = mixin()
+
     const msg = ref({text: 'Hello world'})
+
     const getData = async () => {
       await http.get('/hehe')
       store.dispatch('setUser', 'teng')
       console.log('getData', query(), msg.value.text, userInfo.value, day().format('YYYY年MM月DD HH:mm:ss'))
     }
+    
     return {
       go,
       msg,

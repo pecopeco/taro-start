@@ -11,8 +11,10 @@ import mixin from '@/mixin.js'
 export default {
   setup () {
     const { query } = mixin()
+    
     const msg = ref('Hello world: detail')
     console.log(query())
+    
     return {
       msg,
       query
