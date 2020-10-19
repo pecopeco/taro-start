@@ -2,13 +2,18 @@
 .home
   text {{ msg.text }}
   button(@tap="go({path: 'detail', query: {from: 'home'}})") go detail
+  loading
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import mixin from '@/mixin.js'
+import loading from '@/components/loading'
 
 export default {
+  components: {
+    loading
+  },
   setup () {
     const { store, day, go, query, http, userInfo } = mixin()
     const msg = ref({text: 'Hello world'})

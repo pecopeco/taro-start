@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'taro-test',
+  projectName: 'taro-start',
   date: '2020-10-15',
   designWidth: 750,
   deviceRatio: {
@@ -14,7 +14,6 @@ const config = {
   },
   copy: {
     patterns: [
-      { from: 'src/native/vant/wxs', to: 'dist/native/vant/wxs' }
     ],
     options: {
     }

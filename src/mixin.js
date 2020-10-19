@@ -58,10 +58,10 @@ export default () => {
       if (res.status === 200) {
         return res.data
       } else {
-        toast(`请求错误：${res.message}~~~状态码：${res.status}`)
+        toast(`请求错误：${res.message}，状态码：${res.status}`)
       }
     }).catch((err) => {
-      toast(`请求错误：${err.message}~~~状态码：${err.status}`)
+      toast(`请求错误：${err.message}，状态码：${err.status}`)
     })
   }
   http.get = (url, form) => http(url, form, 'get')

@@ -43,6 +43,7 @@
     "flyio": "^0.6.14",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
+    "taro-ui-vue3": "^1.0.0-alpha.8.0.1",
     "vue": "^3.0.0-beta.15",
     "vuex": "^4.0.0-beta.4"
   },

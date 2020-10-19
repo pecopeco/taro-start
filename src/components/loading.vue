@@ -1,22 +1,14 @@
 <template lang="pug">
 .loading
-  van-loading(type="circular" size="24px" color="#1989fa")
+  AtButton(loading type="secondary")
 </template>
 
 <script>
+import { AtButton } from 'taro-ui-vue3'
 
 export default {
-  name: 'loading',
-  props: {
-  },
   components: {
-  },
-  data () {
-    return {}
-  },
-  methods: {
-  },
-  mounted () {
+    AtButton
   }
 }
 </script>
@@ -29,5 +21,9 @@ export default {
   justify-content center
   width 100%
   height 200px
+  .at-button {
+    background transparent
+    border none
+  }
 }
 </style>
