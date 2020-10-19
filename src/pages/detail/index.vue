@@ -19,9 +19,6 @@ export default {
       msg,
       query
     }
-  },
-  onShow () {
-    const setup = this.$options.setup()
   }
 }
 </script>

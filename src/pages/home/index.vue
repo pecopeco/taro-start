@@ -24,16 +24,12 @@ export default {
       store.dispatch('setUser', 'teng')
       console.log('getData', query(), msg.value.text, userInfo.value, day().format('YYYY年MM月DD HH:mm:ss'))
     }
+    getData()
     
     return {
       go,
-      msg,
-      getData
+      msg
     }
-  },
-  onShow () {
-    const setup = this.$options.setup()
-    setup.getData()
   }
 }
 </script>
