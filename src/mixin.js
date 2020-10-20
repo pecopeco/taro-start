@@ -6,10 +6,11 @@ import store from '@/store'
 
 const fly = new Fly()
 
-const config = { api: 'https://baidu.com' }
-
 export default () => {
   
+  // api配置
+  const config = { api: 'https://baidu.com' }
+
   // 日期处理函数
   const day = dayjs
 
@@ -140,6 +141,7 @@ export default () => {
   return {
     Taro,
     store,
+    config,
     day,
     go,
     goBack,
