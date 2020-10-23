@@ -22,7 +22,7 @@ export default {
     const getData = async () => {
       await http.get('/hehe')
       store.dispatch('setUser', 'teng')
-      console.log('getData', query(), msg.value.text, userInfo.value, day().format('YYYY年MM月DD HH:mm:ss'))
+      console.log('getData', query, msg.value.text, userInfo.value, day().format('YYYY年MM月DD HH:mm:ss'))
     }
     getData()
     
@@ -30,6 +30,9 @@ export default {
       go,
       msg
     }
+  },
+  onShow () {
+    console.log(this)
   }
 }
 </script>

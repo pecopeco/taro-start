@@ -1,7 +1,7 @@
 <template lang="pug">
 .detail
   view {{ msg }}
-  view get query: {{query().from}}
+  view get query: {{query.from}}
 </template>
 
 <script>
@@ -13,12 +13,15 @@ export default {
     const { query } = mixin()
     
     const msg = ref('Hello world: detail')
-    console.log(query())
+    console.log(query)
     
     return {
       msg,
       query
     }
+  },
+  onShow () {
+    console.log(this)
   }
 }
 </script>
