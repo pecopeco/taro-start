@@ -32,7 +32,7 @@ export default {
     }
   },
   onShow () {
-    console.log(this)
+    console.log(this.msg.text)
   }
 }
 </script>

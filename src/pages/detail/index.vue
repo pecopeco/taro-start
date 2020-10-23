@@ -21,7 +21,7 @@ export default {
     }
   },
   onShow () {
-    console.log(this)
+    console.log(this.query.from)
   }
 }
 </script>
