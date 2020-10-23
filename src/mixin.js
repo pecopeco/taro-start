@@ -38,7 +38,7 @@ export default () => {
   }
 
   // 获取路由参数
-  const query = getCurrentInstance().router.params
+  const query = getCurrentInstance().router && getCurrentInstance().router.params
 
   // toast
   const toast = (text, delay = 1500) => {
