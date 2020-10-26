@@ -32,6 +32,6 @@ export default {
   align-items center
   justify-content center
   width 100%
-  height 200px
+  height 300px
 }
 </style>
