@@ -14,6 +14,7 @@ const config = {
   },
   copy: {
     patterns: [
+      { from: 'src/native/vant/wxs', to: 'dist/native/vant/wxs' }
     ],
     options: {
     }

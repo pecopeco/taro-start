@@ -2,17 +2,17 @@
 .home
   text {{ msg.text }}
   button(@tap="go({path: 'detail', query: {from: 'home'}})") go detail
-  loading
+  loadingWrap
 </template>
 
 <script>
 import { ref } from 'vue'
 import mixin from '@/mixin.js'
-import loading from '@/components/loading'
+import loadingWrap from '@/components/loadingWrap'
 
 export default {
   components: {
-    loading
+    loadingWrap
   },
   setup () {
     const { store, day, go, query, http, userInfo } = mixin()
