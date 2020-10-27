@@ -31,9 +31,9 @@ export default () => {
   }
 
   // 返回
-  const goBack = (key = -1) => {
+  const goBack = (key = 1) => {
     Taro.navigateBack({
-      delta: 2
+      delta: key
     })
   }
 
