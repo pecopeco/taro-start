@@ -118,7 +118,7 @@ export default () => {
 
   // 防抖
   let debounceTimer
-  const debounce = function (func, delay = 1000){
+  const debounce = function (func, delay = 1000) {
     if (debounceTimer) {
       clearTimeout(debounceTimer)
     }
