@@ -42,7 +42,7 @@ export default () => {
 
   // toast
   const toast = (text, delay = 1500) => {
-    Taro.showToast({ title: text, icon: 'none', duration: delay || 1000 })
+    Taro.showToast({ title: text, icon: 'none', duration: delay })
   }
 
   // http配置
