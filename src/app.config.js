@@ -29,8 +29,5 @@ export default {
         selectedIconPath: 'assets/my_on.png'
       }
     ]
-  },
-  usingComponents: {
-    'van-loading': 'native/vant/loading/index'
   }
 }
