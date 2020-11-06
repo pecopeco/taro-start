@@ -21,6 +21,7 @@ export default {
 </script>
 
 <style vars>
+
 .loading,
 .loading:before,
 .loading:after {
