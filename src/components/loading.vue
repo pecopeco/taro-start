@@ -8,10 +8,6 @@ export default {
   components: {
   },
   props: {
-    size: {
-      type: String,
-      default: '24px'
-    },
     color: {
       type: String,
       default: '#0dc5c1'
