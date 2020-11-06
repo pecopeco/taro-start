@@ -1,5 +1,6 @@
 <template lang="pug">
-.loading(:style="{color: color}")
+.loading-wrap
+  .loading
 </template>
 
 <script>
@@ -11,13 +12,23 @@ export default {
     color: {
       type: String,
       default: '#0dc5c1'
+    },
+    background: {
+      type: String,
+      default: '#f6f7f9'
     }
   }
 }
 </script>
 
-<style vars>
+<style vars="{ color, background }">
 
+.loading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
 .loading,
 .loading:before,
 .loading:after {
@@ -26,10 +37,10 @@ export default {
 .loading {
   font-size: 11px;
   text-indent: -99999em;
-  margin: 55px auto;
   position: relative;
   width: 10em;
   height: 10em;
+  color: var(--color);
   box-shadow: inset 0 0 0 1em;
   transform: translateZ(0);
   transform: scale(0.5);
@@ -42,7 +53,7 @@ export default {
 .loading:before {
   width: 5.2em;
   height: 10.2em;
-  background: #f6f7f9;
+  background: var(--background);
   border-radius: 10.2em 0 0 10.2em;
   top: -0.1em;
   left: -0.1em;
@@ -52,7 +63,7 @@ export default {
 .loading:after {
   width: 5.2em;
   height: 10.2em;
-  background: #f6f7f9;
+  background: var(--background);
   border-radius: 0 10.2em 10.2em 0;
   top: -0.1em;
   left: 4.9em;
