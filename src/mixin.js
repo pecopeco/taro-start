@@ -15,19 +15,19 @@ export default () => {
   const day = dayjs
 
   // 跳转
-  const go = (key) => {
+  const go = (key, replace = false) => {
     let url
     if (typeof key === 'string') {
-      url = `/pages/${key}/index`
+      url = `/pages/${key}/${key}`
     } else {
-      url = `/pages/${key.path}/index`
+      url = `/pages/${key.path}/${key.path}`
       let queryArr = []
       for (let item in key.query) {
-        queryArr.push(`${item}=${key.query[item]}`)
+        queryArr.push(`${item}=${encodeURIComponent(key.query[item])}`)
       }
-      url = `/pages/${key.path}/index?${queryArr.join('&')}`
+      url = `/pages/${key.path}/${key.path}?${queryArr.join('&')}`
     }
-    Taro.navigateTo({url: url})
+    replace ? Taro.redirectTo({url: url}) : Taro.navigateTo({url: url})
   }
 
   // 返回
@@ -39,6 +39,9 @@ export default () => {
 
   // 获取路由参数
   const query = getCurrentInstance().router && getCurrentInstance().router.params
+  query && Object.keys(query).map((item) => {
+    query[item] = decodeURIComponent(query[item])
+  })
 
   // toast
   const toast = (text, delay = 1500) => {
