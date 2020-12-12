@@ -15,7 +15,7 @@ export default () => {
   const day = dayjs
 
   // 跳转
-  const go = (key, replace = false) => {
+  const go = (key, replace = false, encode = false) => {
     let url
     if (typeof key === 'string') {
       url = `/pages/${key}/${key}`
@@ -23,7 +23,7 @@ export default () => {
       url = `/pages/${key.path}/${key.path}`
       let queryArr = []
       for (let item in key.query) {
-        queryArr.push(`${item}=${encodeURIComponent(key.query[item])}`)
+        queryArr.push(`${item}=${encode ? encodeURIComponent(key.query[item]) : key.query[item]}`)
       }
       url = `/pages/${key.path}/${key.path}?${queryArr.join('&')}`
     }
@@ -39,9 +39,6 @@ export default () => {
 
   // 获取路由参数
   const query = getCurrentInstance().router && getCurrentInstance().router.params
-  query && Object.keys(query).map((item) => {
-    query[item] = decodeURIComponent(query[item])
-  })
 
   // toast
   const toast = (text, delay = 1500) => {
