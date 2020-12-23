@@ -130,6 +130,15 @@ export default () => {
       func.apply(this, arguments)
     }
   }
+
+  // 判断是否是数字
+  const isNum = (key) => {
+    if (typeof key === 'string') {
+      return false
+    } else {
+      return isFinite(key)
+    }
+  }
   
   // 计算属性
   const userInfo = computed(() => {
@@ -149,6 +158,7 @@ export default () => {
     http,
     validate,
     debounce,
+    isNum,
     userInfo
   }
 }
