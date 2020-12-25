@@ -133,11 +133,7 @@ export default () => {
 
   // 判断是否是数字
   const isNum = (key) => {
-    if (typeof key !== 'number') {
-      return false
-    } else {
-      return isFinite(key)
-    }
+    return typeof key === 'number' && isFinite(key)
   }
   
   // 计算属性
