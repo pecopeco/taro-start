@@ -133,9 +133,7 @@ export default () => {
 
   // 判断是否是数字
   const isNum = (key) => {
-    if (typeof key === 'object') {
-      return false
-    } else if (typeof key === 'string') {
+    if (typeof key !== 'number') {
       return false
     } else {
       return isFinite(key)
