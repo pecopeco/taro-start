@@ -121,6 +121,7 @@ export default () => {
   const debounce = function (func, delay = 1000) {
     if (debounceTimer) {
       clearTimeout(debounceTimer)
+      debounceTimer = null
     }
     let callNow = !debounceTimer
     debounceTimer = setTimeout(() => {
