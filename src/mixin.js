@@ -132,6 +132,11 @@ export default () => {
     }
   }
 
+  // 深拷贝
+  const cleanCopy = (obj) => {
+    return JSON.parse(JSON.stringify(obj))
+  }
+
   // 判断是否是数字
   const isNum = (key) => {
     return typeof key === 'number' && isFinite(key)
@@ -155,6 +160,7 @@ export default () => {
     http,
     validate,
     debounce,
+    cleanCopy,
     isNum,
     userInfo
   }
