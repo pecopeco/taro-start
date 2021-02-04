@@ -147,6 +147,9 @@ export default () => {
     return store.state.userInfo
   })
 
+  // 系统是否是ios
+  const isIos = wx.getSystemInfoSync().platform !== 'android'
+
   return {
     Taro,
     store,
@@ -162,6 +165,7 @@ export default () => {
     debounce,
     cleanCopy,
     isNum,
-    userInfo
+    userInfo,
+    isIos
   }
 }
