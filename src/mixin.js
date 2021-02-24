@@ -116,6 +116,29 @@ export default () => {
     return err.msg || ''
   }
 
+  // 版本更新
+  const update = () => {
+    const updateManager = Taro.getUpdateManager()
+    updateManager.onCheckForUpdate((res) => {
+      console.log('是否有版本更新：', res.hasUpdate)
+    })
+    updateManager.onUpdateReady(() => {
+      Taro.showModal({
+        title: '更新提示',
+        content: '新版本已经准备好，是否重启应用？',
+        success: (res) => {
+          if (res.confirm) {
+            // 更新并重启
+            updateManager.applyUpdate()
+          }
+        }
+      })
+    })
+    updateManager.onUpdateFailed(() => {
+      toast('更新版本失败！请重新进入小程序')
+    })
+  }
+
   // 防抖
   let debounceTimer
   const debounce = function (func, delay = 1000) {
@@ -162,6 +185,7 @@ export default () => {
     config,
     http,
     validate,
+    update,
     debounce,
     cleanCopy,
     isNum,
