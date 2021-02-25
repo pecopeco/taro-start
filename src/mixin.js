@@ -171,7 +171,7 @@ export default () => {
   })
 
   // 系统是否是ios
-  const isIos = wx.getSystemInfoSync().platform !== 'android'
+  const isIos = Taro.getSystemInfoSync().platform !== 'android'
 
   return {
     Taro,
